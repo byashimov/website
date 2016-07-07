@@ -1,0 +1,4 @@
+flask
+Flask-Babel
+Flask-WTF
+-e git://github.com/byashimov/typus.git#egg=typus

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block head_meta   %}
+    <title>typus — {{ _('typography tool') }}</title>
+    <link rel="shortcut icon" href="{{ url_for('typus_web.static', filename='favicon.ico') }}">
+{% endblock %}
+
+{% block body %}
+<form method="POST" class="container">
+    <div class="row">
+        <article class="col-md-8">
+            <h1>typus<sup>α</sup><small> — {{ _('typography tool') }}</small></h1>
+            {% from 'helpers/forms.html' import form_field %}
+            {{ form.hidden_tag() }}
+            {{ form_field(form.text, rows=8, autofocus=True) }}
+            {{ form_field(form.escape_phrases) }}
+            <div class="form-group">
+                <button type="submit" class="btn btn-success btn-block">{{ _('typography') }}</button>
+            </div>
+        </article>
+        <aside class="col-md-3 col-md-push-1">
+            {% if g.locale == 'en' %}
+                <a href="?lang=ru">По-русски</a>
+            {% else %}
+                <a href="?lang=en">In English</a>
+            {% endif %}
+            <hr>
+            <b>{{ _('Debug') }}</b>
+            {{ form_field(form.debug) }}
+            <hr>
+            <p>{{ _('Found a bug? Report it!') }}</p>
+            <p><a href="mailto:byashimov@gmail.com">byashimov@gmail.com</a></p>
+            <p><a href="https://github.com/byashimov/typus" title="{{ _('Github project page') }}"><img src="{{ url_for('static', filename='svg/octocat.svg') }}" width="28" alt="github"></a></p>
+        </aside>
+    </div>
+</form>
+<style>
+    body {margin: 50px 0}
+    h1 {margin: 0 0 30px}
+    h1 sup {opacity: .2; font-style: italic; font-size: 55%; top: -1em; margin-left: 2px}
+    hr {margin: 30px 0}
+    textarea {resize: vertical}
+</style>
+{% endblock %}

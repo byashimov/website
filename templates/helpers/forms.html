@@ -1,0 +1,19 @@
+{% macro field_errors(field) %}
+    {% for error in field.errors %}
+        <p class="help-block">{{ error }}</p>
+    {% endfor %}
+{% endmacro %}
+
+{% macro form_field(field) %}
+    {% if field.widget.input_type in ('checkbox', 'radio') %}
+        <div class="{{ field.widget.input_type }}">
+            <label for="{{ field.name }}">{{ field() }} {{ field.label.text }}</label>
+            {{ field_errors(field) }}
+        </div>
+    {% else %}
+        <div class="form-group {% if field.errors %}has-error{% endif %}">
+            {{ field(class_="form-control", placeholder=field.label.text, required=field.flags.required, **kwargs) }}
+            {{ field_errors(field) }}
+        </div>
+    {% endif %}
+{% endmacro %}
