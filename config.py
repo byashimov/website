@@ -13,8 +13,5 @@ class Prod(Config):
 
 
 class Dev(Config):
-    # Boo! Do what ever you want, unit FLASK_DEBUG=1 is not exported
-    # it's DEBUG=False for CLI
-    # https://github.com/pallets/flask/blob/master/flask/cli.py#L403
     DEBUG = True
     SECRET_KEY = 'booze'
