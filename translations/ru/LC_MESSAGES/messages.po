@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-07-04 23:24+0300\n"
+"POT-Creation-Date: 2016-07-09 15:08+0300\n"
 "PO-Revision-Date: 2016-07-03 00:17+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ru\n"
@@ -19,35 +19,36 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-#: forms.py:8
+#: apps/typus_web/forms.py:8
 msgid "Type some text here"
 msgstr "Напечатайте что-нибудь"
 
-#: forms.py:10
+#: apps/typus_web/forms.py:10
 msgid "Replace non-breaking space with underscore"
 msgstr "Заменить неразрывный пробел символом подчеркивания"
 
-#: forms.py:12
+#: apps/typus_web/forms.py:12
 msgid "Escape phrases, comma separated"
 msgstr "Фразы-исключения, через запятую"
 
-#: templates/typus_view.html:4 templates/typus_view.html:11
+#: apps/typus_web/templates/form_view.html:4
+#: apps/typus_web/templates/form_view.html:12
 msgid "typography tool"
 msgstr "типографирует тексты"
 
-#: templates/typus_view.html:17
+#: apps/typus_web/templates/form_view.html:18
 msgid "typography"
 msgstr "оттипографировать"
 
-#: templates/typus_view.html:27
+#: apps/typus_web/templates/form_view.html:28
 msgid "Debug"
 msgstr "Отладка"
 
-#: templates/typus_view.html:30
+#: apps/typus_web/templates/form_view.html:31
 msgid "Found a bug? Report it!"
 msgstr "Нашли ошибку? Сообщите!"
 
-#: templates/typus_view.html:32
+#: apps/typus_web/templates/form_view.html:33
 msgid "Github project page"
 msgstr "Страница проекта на Github"
 
