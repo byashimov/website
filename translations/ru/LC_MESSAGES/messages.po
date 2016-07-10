@@ -34,11 +34,11 @@ msgstr "Фразы-исключения, через запятую"
 #: apps/typus_web/templates/form_view.html:4
 #: apps/typus_web/templates/form_view.html:12
 msgid "typography tool"
-msgstr "типографирует тексты"
+msgstr "типографит тексты"
 
 #: apps/typus_web/templates/form_view.html:18
 msgid "typography"
-msgstr "оттипографировать"
+msgstr "оттипографить"
 
 #: apps/typus_web/templates/form_view.html:28
 msgid "Debug"
