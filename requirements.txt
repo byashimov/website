@@ -1,4 +1,5 @@
 flask
 Flask-Babel
 Flask-WTF
+uwsgi
 -e git://github.com/byashimov/typus.git#egg=typus
