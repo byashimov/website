@@ -1,10 +1,10 @@
 from flask_babel import lazy_gettext as _
-from flask_wtf import Form
 from wtforms import BooleanField, StringField, TextAreaField
+from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired, Length
 
 
-class TypusForm(Form):
+class TypusForm(FlaskForm):
     text = TextAreaField(_('Type some text here'),
                          [DataRequired(), Length(min=3, max=42000)])
     debug = BooleanField(_('Replace non-breaking space with underscore'),
