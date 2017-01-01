@@ -1,4 +1,7 @@
 import re
+import html
+
+from difflib import SequenceMatcher
 
 from flask import g, make_response, render_template
 from flask.views import MethodView
@@ -26,15 +29,36 @@ class FormView(MethodView):
     def post(self):
         form = self.form_class()
         if not form.validate_on_submit():
+            print(form.errors.items())
             return self.response(422, form=form)
 
         typus = self.typus[g.locale]
         escape_phrases = self.split_phrases(form.escape_phrases.data)
-        form.text.data = typus(form.text.data,
-                               escape_phrases=escape_phrases,
-                               debug=form.debug.data)
-        return self.response(form=form)
+
+        original = form.text.data
+        processed = typus(original, escape_phrases=escape_phrases)
+        diff = self.mark_diff(original, processed)
+
+        # Puts processed text back in form for easy copy&paste
+        # and visual diff with sans-serif
+        form.text.data = processed
+        return self.response(form=form, diff=diff)
 
     def response(self, *args, **context):
         content = render_template(self.template_name, **context)
         return make_response(content, *args)
+
+    def mark_diff(self, before, after):
+        diff = ''
+        matcher = SequenceMatcher(None, before, after)
+        marked = False
+
+        for op, *x, start, stop in matcher.get_opcodes():
+            hunk = html.escape(after[start:stop])
+            if op in {'replace', 'insert'}:
+                hunk = '<mark>{}</mark>'.format(hunk)
+                marked = True
+            diff += hunk
+
+        if marked:
+            return diff
