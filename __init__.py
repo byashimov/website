@@ -2,13 +2,16 @@ import os
 
 from flask import Flask, g, request
 from flask_babel import Babel
+from flask_wtf.csrf import CsrfProtect
 
 from .apps import typus_web
 
 site = Flask(__name__)
 site.config.from_object(os.environ['SITE_CONFIG'])
 site.register_blueprint(typus_web.bp, url_prefix='/typus')
+
 babel = Babel(site)
+CsrfProtect(site)
 
 
 @babel.localeselector
