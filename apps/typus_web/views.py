@@ -1,6 +1,6 @@
 import re
-import html
-
+from html import escape
+from http import HTTPStatus
 from difflib import SequenceMatcher
 
 from flask import g, make_response, render_template
@@ -29,8 +29,7 @@ class FormView(MethodView):
     def post(self):
         form = self.form_class()
         if not form.validate_on_submit():
-            print(form.errors.items())
-            return self.response(422, form=form)
+            return self.response(HTTPStatus.UNPROCESSABLE_ENTITY, form=form)
 
         typus = self.typus[g.locale]
         escape_phrases = self.split_phrases(form.escape_phrases.data)
@@ -54,7 +53,7 @@ class FormView(MethodView):
         marked = False
 
         for op, *x, start, stop in matcher.get_opcodes():
-            hunk = html.escape(after[start:stop])
+            hunk = escape(after[start:stop])
             if op in {'replace', 'insert'}:
                 hunk = '<mark>{}</mark>'.format(hunk)
                 marked = True
