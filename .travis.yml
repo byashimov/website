@@ -14,3 +14,4 @@ script:
   - coverage run -m unittest discover -t ../
 after_success:
   - coverage report
+  - codecov
