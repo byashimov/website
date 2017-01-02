@@ -2,7 +2,7 @@ import os
 
 
 class Config(object):
-    BABEL_DEFAULT_LOCALE = 'ru'
+    BABEL_DEFAULT_LOCALE = 'en'
     BABEL_SUPPORTED_LOCALES = {'en', 'ru'}
     SESSION_COOKIE_HTTPONLY = True
 
