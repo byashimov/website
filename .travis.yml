@@ -10,7 +10,6 @@ install:
 env:
   - SITE_CONFIG="website.config.Testing"
 script:
-  - python --version
   - coverage run -m unittest discover -t ../
 after_success:
   - coverage report
