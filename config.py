@@ -16,3 +16,9 @@ class Prod(Config):
 class Dev(Config):
     DEBUG = True
     SECRET_KEY = 'booze'
+
+
+class Testing(Dev):
+    TESTING = True
+    SERVER_NAME = 'localhost'
+    WTF_CSRF_ENABLED = False
