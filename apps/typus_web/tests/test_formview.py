@@ -1,8 +1,6 @@
-import unittest
-
 from flask_testing import TestCase
 
-from flask import current_app, url_for
+from flask import url_for
 
 from http import HTTPStatus
 from website import site
@@ -38,6 +36,8 @@ class FormViewTestCase(TestCase):
             'escape_phrases': '(c), (r)'
         }
         response = self.client.post(self.url, data=data)
+        self.assert200(response)
+
         form = self.get_context_variable('form')
         self.assertEqual(form.text.data, '“test” (c) (r)™')
 
