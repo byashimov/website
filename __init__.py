@@ -20,7 +20,9 @@ def get_locale():
     lang = request.args.get('lang')
     if lang and lang in supported_locals:
         return lang
-    return request.accept_languages.best_match(supported_locals)
+
+    fallback = site.config['BABEL_DEFAULT_LOCALE']
+    return request.accept_languages.best_match(supported_locals) or fallback
 
 
 @site.before_request
