@@ -1,12 +1,14 @@
 import re
-from html import escape
-from http import HTTPStatus
 from difflib import SequenceMatcher
+
+from typus import en_typus, ru_typus
+from typus.utils import splinter
 
 from flask import g, make_response, render_template
 from flask.views import MethodView
-from typus import en_typus, ru_typus
-from typus.utils import splinter
+
+from html import escape
+from http import HTTPStatus
 
 from .forms import TypusForm
 

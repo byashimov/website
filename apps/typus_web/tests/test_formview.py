@@ -1,9 +1,10 @@
 import unittest
-from http import HTTPStatus
 
 from flask_testing import TestCase
 
-from flask import url_for, current_app
+from flask import current_app, url_for
+
+from http import HTTPStatus
 from website import site
 
 

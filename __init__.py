@@ -1,8 +1,9 @@
 import os
 
-from flask import Flask, g, request
 from flask_babel import Babel
 from flask_wtf.csrf import CsrfProtect
+
+from flask import Flask, g, request
 
 from .apps import typus_web
 
