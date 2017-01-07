@@ -1,8 +1,5 @@
 -e git://github.com/byashimov/typus.git#egg=typus
-blinker
-coverage
 flask
 Flask-Babel
-Flask-Testing
 Flask-WTF
 uwsgi

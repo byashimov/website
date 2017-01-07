@@ -7,6 +7,7 @@ cache:
     - $HOME/.cache/pip
 install:
   - travis_retry pip install -r requirements.txt
+  - travis_retry pip install Flask-Testing blinker coverage codecov
 env:
   - SITE_CONFIG="website.config.Testing"
 script:
