@@ -8,8 +8,10 @@ __all__ = {'server', 'makemessages', 'compilemessages'}
 
 def server():
     """
-    Runs developer server on 0.0.0.0 in debug mode.
+    Runs developer server on 0.0.0.0 with Dev config.
     """
+
+    os.environ['SITE_CONFIG'] = 'website.config.Dev'
 
     from website import site
     site.run(host='0.0.0.0')
