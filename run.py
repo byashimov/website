@@ -6,6 +6,10 @@ import sys
 __all__ = {'server', 'makemessages', 'compilemessages'}
 
 
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+PARENT_DIR = os.path.dirname(ROOT_DIR)
+
+
 def server():
     """
     Runs developer server on 0.0.0.0 with Dev config.
@@ -31,12 +35,14 @@ def compilemessages():
     """
     Compiles translation messages.
     """
-    os.system('pybabel compile -d translations')
+
+    translations = os.path.join(ROOT_DIR, 'translations')
+    os.system('pybabel compile -d ' + translations)
 
 
 if __name__ == '__main__':
     # Resolves relative imports
-    sys.path.append(os.pardir)
+    sys.path.append(PARENT_DIR)
 
     # Caches for help output
     scope = globals()
