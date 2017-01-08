@@ -1,4 +1,4 @@
--e git://github.com/byashimov/typus.git#egg=typus
+git+git://github.com/byashimov/typus.git#egg=typus
 flask
 Flask-Babel
 Flask-FlatPages
