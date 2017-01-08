@@ -2,7 +2,7 @@ import os
 
 from flask_babel import Babel
 from flask_flatpages import FlatPages
-from flask_wtf.csrf import CsrfProtect
+from flask_wtf.csrf import CSRFProtect
 
 from flask import Flask, g, request
 
@@ -15,7 +15,7 @@ site.register_blueprint(typus_web.bp, url_prefix='/typus')
 
 pages = FlatPages(site)
 babel = Babel(site)
-CsrfProtect(site)
+CSRFProtect(site)
 
 
 @babel.localeselector
