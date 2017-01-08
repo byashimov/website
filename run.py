@@ -3,7 +3,7 @@
 import os
 import sys
 
-__all__ = {'server', 'makemessages', 'compilemessages'}
+__all__ = {'server', 'makemessages', 'compilemessages', 'tests'}
 
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -19,6 +19,17 @@ def server():
 
     from website import site
     site.run(host='0.0.0.0')
+
+
+def tests():
+    """
+    Runs tests and reports coverage.
+    """
+
+    os.environ['SITE_CONFIG'] = 'website.config.Testing'
+    os.system('coverage run -m unittest discover -t {} -s {} '
+              '&& coverage report'
+              .format(PARENT_DIR, ROOT_DIR))
 
 
 def makemessages():
