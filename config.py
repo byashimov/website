@@ -5,6 +5,8 @@ class Config(object):
     BABEL_DEFAULT_LOCALE = 'en'
     BABEL_SUPPORTED_LOCALES = {'en', 'ru'}
     SESSION_COOKIE_HTTPONLY = True
+    FLATPAGES_ROOT = 'apps/flatpages/pages'
+    FLATPAGES_EXTENSION = '.md'
 
 
 class Prod(Config):

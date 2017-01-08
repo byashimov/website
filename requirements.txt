@@ -1,5 +1,6 @@
 -e git://github.com/byashimov/typus.git#egg=typus
 flask
 Flask-Babel
+Flask-FlatPages
 Flask-WTF
 uwsgi
