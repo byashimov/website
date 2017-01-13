@@ -10,5 +10,7 @@ install:
   - travis_retry pip install Flask-Testing blinker coverage codecov
 script:
   - python run.py tests
+  - python run.py makemessages
+  - python run.py compilemessages
 after_success:
   - codecov
