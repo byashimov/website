@@ -42,9 +42,11 @@ def makemessages():
     babel = os.path.join(ROOT_DIR, 'babel.cfg')
 
     # Creates translations
-    os.system('pybabel -q extract --omit-header -s --no-location '
+    os.system('pybabel -q extract '
+              '-s --omit-header --no-location --sort-by-file '
               '-k lazy_gettext -F {babel} -o {pot} {root} '
-              '&& pybabel update -i {pot} -d {translations}'
+              '&& pybabel update -i {pot} -d {translations} '
+              '2>/dev/null'
               .format(root=ROOT_DIR, babel=babel, pot=pot,
                       translations=translations))
 
@@ -59,12 +61,11 @@ def makemessages():
             with open(path, 'r') as trans:
                 clean = (
                     s for s in trans.readlines()
-                    # --omit-header doesn't work :(
-                    if not s.startswith(('"', '#', 'msgid ""', 'msgstr ""'))
+                    if not s.startswith(('"', '#'))
                 )
 
             with open(path, 'w+') as trans:
-                trans.writelines(''.join(clean).strip())
+                trans.write(''.join(clean).strip())
 
 
 def compilemessages():
