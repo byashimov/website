@@ -74,7 +74,7 @@ def compilemessages():
     """
 
     translations = os.path.join(ROOT_DIR, 'translations')
-    os.system('pybabel compile -d ' + translations)
+    os.system('pybabel -q compile -d ' + translations)
 
 
 if __name__ == '__main__':
