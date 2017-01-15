@@ -15,7 +15,14 @@ site.register_blueprint(typus_web.bp, url_prefix='/typus')
 
 pages = FlatPages(site)
 babel = Babel(site)
-CSRFProtect(site)
+csrf = CSRFProtect(site)
+
+# Fucking Jesus fuck! I'm not able to pass a class based view
+# since it had been registered as a lowercased endpoint!
+# And I can't use a decorator because of relative fucking imports!
+# See the form, it has to exempt csrf too.
+# Who the hell had invented this?
+csrf.exempt('website.apps.typus_web.views.api_view')
 
 
 @babel.localeselector
