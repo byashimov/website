@@ -16,7 +16,6 @@ phrases_delim = re.compile(r'(?<!\\),\s*')
 
 
 class FormView(MethodView):
-    method = ('GET', 'POST')
     form_class = TypusForm
     template_name = 'form_view.html'
     split_phrases = staticmethod(splinter(','))
@@ -32,6 +31,7 @@ class FormView(MethodView):
         form = self.form_class()
         if not form.validate_on_submit():
             return self.response(HTTPStatus.UNPROCESSABLE_ENTITY, form=form)
+    methods = ('GET', 'POST')
 
         typus = self.typus[g.locale]
         escape_phrases = self.split_phrases(form.escape_phrases.data)
