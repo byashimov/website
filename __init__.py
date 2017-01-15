@@ -10,8 +10,8 @@ from .apps import flatpages, typus_web
 
 site = Flask(__name__)
 site.config.from_object(os.environ['SITE_CONFIG'])
-site.register_blueprint(flatpages.bp)
 site.register_blueprint(typus_web.bp, url_prefix='/typus')
+site.register_blueprint(flatpages.bp)
 
 pages = FlatPages(site)
 babel = Babel(site)
