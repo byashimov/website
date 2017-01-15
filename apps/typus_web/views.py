@@ -4,35 +4,28 @@ from difflib import SequenceMatcher
 from typus import en_typus, ru_typus
 from typus.utils import splinter
 
-from flask import g, make_response, render_template
-from flask.views import MethodView
+from flask import g, jsonify
 
 from html import escape
-from http import HTTPStatus
+from website.core.views import BaseFormView, TemplateFormView
 
-from .forms import TypusForm
-
-phrases_delim = re.compile(r'(?<!\\),\s*')
+from .forms import ApiForm, ViewForm
 
 
-class FormView(MethodView):
-    form_class = TypusForm
-    template_name = 'form_view.html'
+class TypusViewMixin:
     split_phrases = staticmethod(splinter(','))
     typus = {
         'en': en_typus,
         'ru': ru_typus
     }
 
-    def get(self):
-        return self.response(form=self.form_class())
 
-    def post(self):
-        form = self.form_class()
-        if not form.validate_on_submit():
-            return self.response(HTTPStatus.UNPROCESSABLE_ENTITY, form=form)
+class FormView(TypusViewMixin, TemplateFormView):
     methods = ('GET', 'POST')
+    form_class = ViewForm
+    template_name = 'form_view.html'
 
+    def form_valid(self, form):
         typus = self.typus[g.locale]
         escape_phrases = self.split_phrases(form.escape_phrases.data)
 
@@ -44,10 +37,6 @@ class FormView(MethodView):
         # and visual diff with sans-serif
         form.text.data = processed
         return self.response(form=form, diff=diff)
-
-    def response(self, *args, **context):
-        content = render_template(self.template_name, **context)
-        return make_response(content, *args)
 
     def mark_diff(self, before, after):
         diff = ''
@@ -63,3 +52,20 @@ class FormView(MethodView):
 
         if marked:
             return diff
+
+
+class ApiView(TypusViewMixin, BaseFormView):
+    methods = ('POST', )
+    form_class = ApiForm
+
+    def response(self, **context):
+        return jsonify(context)
+
+    def form_invalid(self, form):
+        return self.response(errors=form.errors)
+
+    def form_valid(self, form):
+        typus = self.typus[form.lang.data]
+        escape_phrases = self.split_phrases(form.escape_phrases.data)
+        text = typus(form.text.data, escape_phrases=escape_phrases)
+        return self.response(text=text)
