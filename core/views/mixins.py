@@ -1,10 +1,8 @@
 from flask import make_response, render_template
-from flask.views import MethodView
-
 from http import HTTPStatus
 
 
-class BaseFormView(MethodView):
+class FormViewMixin:
     form_class = NotImplemented
 
     def post(self):
@@ -24,16 +22,18 @@ class BaseFormView(MethodView):
         raise NotImplementedError()
 
 
-class TemplateFormView(BaseFormView):
+class TemplateViewMixin:
+    methods = ('GET', )
+
     def get(self):
-        return self.response(form=self.form_class())
-
-    def form_valid(self, form):
-        return self.response(form=form)
-
-    def form_invalid(self, form):
-        return self.response(form=form)
+        return self.response()
 
     def response(self, **context):
-        content = render_template(self.template_name, **context)
+        context_data = self.get_context_data(**context)
+        content = render_template(self.template_name, **context_data)
         return make_response(content)
+
+    def get_context_data(self, **context):
+        return context
+
+
