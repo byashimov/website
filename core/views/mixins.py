@@ -35,5 +35,3 @@ class TemplateViewMixin:
 
     def get_context_data(self, **context):
         return context
-
-
