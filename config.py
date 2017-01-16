@@ -3,10 +3,16 @@ import os
 
 class Config(object):
     BABEL_DEFAULT_LOCALE = 'en'
-    BABEL_SUPPORTED_LOCALES = {'en', 'ru'}
+    BABEL_SUPPORTED_LOCALES = ('en', 'ru')
     SESSION_COOKIE_HTTPONLY = True
     FLATPAGES_ROOT = 'apps/flatpages/pages'
     FLATPAGES_EXTENSION = '.md'
+    FLATPAGES_MARKDOWN_EXTENSIONS = (
+        'codehilite',
+        'def_list',
+        'headerid',
+        'smarty',
+    )
 
 
 class Prod(Config):
