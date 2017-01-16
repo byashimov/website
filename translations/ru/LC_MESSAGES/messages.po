@@ -16,7 +16,7 @@ msgstr "Оттипографить"
 msgid "Found a bug?"
 msgstr "Нашли ошибку?"
 
-msgid "Report!"
+msgid "Report it!"
 msgstr "Сообщите!"
 
 msgid "all projects"
