@@ -3,7 +3,7 @@ from difflib import SequenceMatcher
 from typus import en_typus, ru_typus
 from typus.utils import splinter
 
-from flask import g, jsonify
+from flask import abort, g, jsonify
 from flask.views import MethodView
 
 from html import escape
@@ -56,8 +56,11 @@ class FormView(TypusViewMixin, TemplateFormView):
 
 
 class ApiView(TypusViewMixin, FormViewMixin, MethodView):
-    methods = ('POST', )
+    methods = ('POST', 'GET')
     form_class = ApiForm
+
+    def get(self):
+        return abort(405)
 
     def response(self, **context):
         return jsonify(context)
