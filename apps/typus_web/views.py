@@ -1,13 +1,14 @@
-import re
 from difflib import SequenceMatcher
 
 from typus import en_typus, ru_typus
 from typus.utils import splinter
 
 from flask import g, jsonify
+from flask.views import MethodView
 
 from html import escape
-from website.core.views import BaseFormView, TemplateFormView
+from website.core.views import TemplateFormView
+from website.core.views.mixins import FormViewMixin
 
 from .forms import ApiForm, ViewForm
 
@@ -54,7 +55,7 @@ class FormView(TypusViewMixin, TemplateFormView):
             return diff
 
 
-class ApiView(TypusViewMixin, BaseFormView):
+class ApiView(TypusViewMixin, FormViewMixin, MethodView):
     methods = ('POST', )
     form_class = ApiForm
 
