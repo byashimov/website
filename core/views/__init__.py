@@ -1,3 +1,3 @@
 # flake8: noqa
 
-from .base import TemplateView, TemplateFormView
+from .base import TemplateFormView, TemplateView

@@ -1,8 +1,9 @@
-from flask import url_for
 from flask_babel import lazy_gettext as _
+
+from flask import url_for
 from flask.views import MethodView
 
-from .mixins import TemplateViewMixin, FormViewMixin
+from .mixins import FormViewMixin, TemplateViewMixin
 
 
 class TemplateView(TemplateViewMixin, MethodView):
