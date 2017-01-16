@@ -1,9 +1,6 @@
 msgid ""
 msgstr ""
 
-msgid "Github project page"
-msgstr "Страница проекта на Github"
-
 msgid "Type some text here"
 msgstr "Напечатайте что-нибудь"
 
@@ -16,5 +13,17 @@ msgstr "типографит тексты"
 msgid "Typography"
 msgstr "Оттипографить"
 
-msgid "Found a bug? Report it!"
-msgstr "Нашли ошибку? Сообщите!"
+msgid "Found a bug?"
+msgstr "Нашли ошибку?"
+
+msgid "Report!"
+msgstr "Сообщите!"
+
+msgid "all projects"
+msgstr ""
+
+msgid "typus demo"
+msgstr ""
+
+msgid "typus api"
+msgstr ""

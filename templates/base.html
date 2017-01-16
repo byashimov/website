@@ -22,7 +22,7 @@
                                 <li><a href="{{ url }}" {% if url == request.path %}class="active"{% endif %}>{{ title }}</a></li>
                             {% endfor %}
                             <li><a href="mailto:byashimov@gmail.com">byashimov@gmail.com</a></li>
-                            <li><a href="https://github.com/byashimov" title="{{ _('My github page') }}"><img src="{{ url_for('static', filename='svg/octocat.svg') }}" width="28" alt="github"></a></li>
+                            <li><a href="https://github.com/byashimov" title="My github page"><img src="{{ url_for('static', filename='svg/octocat.svg') }}" width="28" alt="github"></a></li>
                         </ul>
                         {% block sidebar_tail %}{% endblock %}
                     {% endblock %}
