@@ -18,7 +18,7 @@ babel = Babel(site)
 csrf = CSRFProtect(site)
 
 # Fucking Jesus fuck! I'm not able to pass a class based view
-# since it had been registered as a lowercased endpoint!
+# since it has an endpoint which is not equal to views's name!
 # And I can't use a decorator because of relative fucking imports!
 # See the form, it has to exempt csrf too.
 # Who the hell had invented this?
