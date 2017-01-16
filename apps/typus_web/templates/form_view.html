@@ -7,47 +7,33 @@
     <link rel="shortcut icon" href="{{ url_for('typus_web.static', filename='favicon.ico') }}">
 {% endblock %}
 
-{% block body %}
-<form method="POST" class="container">
-    <div class="row">
-        <article class="col-md-8">
-            <h1>typus<sup>β</sup><small> — {{ _('typography tool') }}</small></h1>
-            {{ form.hidden_tag() }}
-            {{ form_field(form.text, rows=6, autofocus=True) }}
-            {{ form_field(form.escape_phrases) }}
-            <div class="form-group">
-                <button type="submit" class="btn btn-success btn-block">{{ _('Typography') }}</button>
-            </div>
-            {% if diff %}
-                <pre class="diff">{{ diff|safe }}</pre>
-            {% endif %}
-        </article>
-        <aside class="col-md-3 col-md-push-1">
-            {% if g.locale == 'en' %}
-                <a href="?lang=ru">По-русски</a>
-            {% else %}
-                <a href="?lang=en">In English</a>
-            {% endif %}
-            <hr>
-            <p>{{ _('Found a bug? Report it!') }}</p>
-            <p><a href="mailto:byashimov@gmail.com">byashimov@gmail.com</a></p>
-            <p><a href="https://github.com/byashimov/typus" title="{{ _('Github project page') }}"><img src="{{ url_for('static', filename='svg/octocat.svg') }}" width="28" alt="github"></a></p>
-        </aside>
+{% block content %}
+<h1>typus<sup>β</sup><small> — {{ _('typography tool') }}</small></h1>
+{% if diff is defined and not diff %}
+    <div class="alert alert-info">Nothing changed.</div>
+{% endif %}
+<form method="POST">
+    {{ form.hidden_tag() }}
+    {{ form_field(form.text, rows=6, autofocus=True) }}
+    {{ form_field(form.escape_phrases) }}
+    <div class="form-group">
+        <button type="submit" class="btn btn-success btn-block">{{ _('Typography') }}</button>
     </div>
+    {% if diff %}
+        <pre class="diff">{{ diff|safe }}</pre>
+    {% endif %}
 </form>
-<style>
-    h1 sup {opacity: .2; font-style: italic; font-size: 55%; top: -1em; margin-left: 2px}
-    textarea {resize: vertical}
-    .diff {
-        background: white;
-        border-color: #ecf0f1;
-        color: #2c3e50;
-        margin-top: 20px;
-        white-space: pre-wrap;
-    }
-    .diff mark {
-        background: #FFE47E;
-        padding: 0;
-    }
-</style>
 {% endblock %}
+
+{% block sidebar_head %}
+    <p>
+        {% if g.locale == 'en' %}
+            <a href="?lang=ru">По-русски</a>
+        {% else %}
+            <a href="?lang=en">In English</a>
+        {% endif %}
+    </p>
+    <p>{{ _('Found a bug?') }} <a href="https://github.com/byashimov/typus/issues" target="_blank">{{ _('Report!') }}</a></p>
+    <hr>
+{% endblock %}
+

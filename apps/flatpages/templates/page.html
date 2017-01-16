@@ -4,11 +4,6 @@
     <title>{{ page.title }}</title>
 {% endblock %}
 
-{% block body %}
-    <article class="container">
-        {{ page.html|safe }}
-        <hr>
-        <p><a href="mailto:byashimov@gmail.com">byashimov@gmail.com</a></p>
-        <p><a href="https://github.com/byashimov/typus" title="{{ _('Github project page') }}"><img src="{{ url_for('static', filename='svg/octocat.svg') }}" width="28" alt="github"></a></p>
-    </article>
+{% block content %}
+    {{ page.html|safe }}
 {% endblock %}
