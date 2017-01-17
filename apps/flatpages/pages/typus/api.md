@@ -16,9 +16,12 @@ This API doesn't store any inputs. Feel free to browse it's [source][website] be
 
 ---
 
-## POST
+## Usage
 
-The only acceptable method is `POST`. Response type is `JSON`.  
+- Request url is `https://byashimov.com/typus/api/v1/`
+- The only acceptable method is `POST`
+- Response type is `JSON`
+- Available params: `text`, `lang`, `escape_phrases`
 
 ### text
 
@@ -33,14 +36,13 @@ Should have length between the range `(3, 42000)`.
 
 ### lang
 
-Aviable values: `en` and `ru`.
+Available values: `en` and `ru`.
     
     :::bash
     $ curl --data "text='foo'&lang=ru" https://byashimov.com/typus/api/v1/                  
     {
       "text": "\u00abfoo\u00bb"
     }
-
 
 ### escape_phrases
 
@@ -53,6 +55,21 @@ Phrases not to be proceeded, comma separated: `(c), (r)`. To pass a comma within
     }
 
 We have two pairs here: `(c), (r)` and `(tm)`. So only last two elements had been proceed.
+
+## Handling errors
+
+If anything went wrong, API returns `422` status code with a dictionary of verbose error messages.
+
+    :::bash
+    $ curl -X POST http://127.0.0.1:5000/typus/api/v1/ 
+    {
+      "errors": {
+        "text": [
+          "This field is required."
+        ]
+      }
+    }
+
 
 [typus]: https://github.com/byashimov/typus
 [docs]: http://py-typus.readthedocs.io/en/latest/#installation
