@@ -10,6 +10,9 @@ msgstr "Фразы-исключения, через запятую"
 msgid "typography tool"
 msgstr "типографит тексты"
 
+msgid "Nothing changed"
+msgstr "Текст не изменился"
+
 msgid "Typography"
 msgstr "Оттипографить"
 

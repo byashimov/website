@@ -10,7 +10,7 @@
 {% block content %}
 <h1>typus<sup>β</sup><small> — {{ _('typography tool') }}</small></h1>
 {% if diff is defined and not diff %}
-    <div class="alert alert-info">Nothing changed.</div>
+    <p class="text-muted">{{ _('Nothing changed') }}.</p>
 {% endif %}
 <form method="POST">
     {{ form.hidden_tag() }}
