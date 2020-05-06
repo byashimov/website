@@ -19,6 +19,10 @@ Yet another application settings helper.
 
 Makes generator cache it's result and act like a regular sequence.
 
+## [hello world][hello-world]
+
+Greatest hiking calendar.
+
 ## [this website][website]
 
 Is open-source too.
@@ -29,4 +33,5 @@ Is open-source too.
 [typus_demo]: /typus/
 [typus_api]: /typus/api/
 [yarn]: https://github.com/byashimov/yarn
+[hello-world]: https://tsouvarev.github.io/helloworld/www/
 [website]: https://github.com/byashimov/website
