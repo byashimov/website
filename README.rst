@@ -12,8 +12,9 @@ Website
 
 This is my private website_ files.
 Feel free to use it's source code for any purpose.
+THANK YOU for contribution.
 
-**NOTE**: Octocat logo is used under the `official legal terms`_.
+**NOTE**: Octocat logo is used under the `official legal terms`_.please read the policies.
 
 .. _website: https://byashimov.com
 .. _official legal terms: https://github.com/logos
