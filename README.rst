@@ -1,5 +1,5 @@
-Website
-=======
+An Amazing Website
+==================
 
 .. image:: https://travis-ci.org/byashimov/website.svg?branch=develop
     :alt: Build Status
