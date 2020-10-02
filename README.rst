@@ -1,4 +1,4 @@
-Website
+Private Website
 =======
 
 .. image:: https://travis-ci.org/byashimov/website.svg?branch=develop
