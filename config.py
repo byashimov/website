@@ -9,9 +9,9 @@ class Config(object):
     FLATPAGES_EXTENSION = '.md'
     FLATPAGES_MARKDOWN_EXTENSIONS = (
         'codehilite',
-        'def_list',
-        'headerid',
-        'smarty',
+        'def_list'  ,
+        'headerid'  ,
+        'smarty'    , 
     )
 
 
